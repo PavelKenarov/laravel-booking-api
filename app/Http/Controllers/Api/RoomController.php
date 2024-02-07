@@ -41,48 +41,12 @@ class RoomController extends Controller
             'message' => 'Room created successfully',
             'data' => $room,
         ], 201);
-
-/*
-        try {
-            $validatedData = $request->validate([
-                'number' => 'required|integer',
-                'name' => 'required|string',
-                'price' => 'required|numeric',
-                'type' => 'required|in:' . Room::TYPE_ONE . ',' . Room::TYPE_STUDIO . ',' . Room::TYPE_TWO,
-            ]);
-        } catch (ValidationException $e){
-            return response()->json([
-                'success' => false,
-                'errors' => $e->validator->errors()->getMessages(),
-            ], 422);
-        }
-
-        try {
-            $room = Room::create($validatedData);
-        } catch (ValidationException $e) {
-            return response()->json([
-                'success' => false,
-                'errors' => $e->validator->errors()->getMessages(),
-            ], 422);
-        }
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Room created successfully',
-            'data' => $room,
-        ], 201);*/
     }
 
     public function show(Room $room)
     {
         $get = Room::with('bookings')->find($room->id);
-        $bookings = [];
-        if(!empty($get->bookings)){
-            foreach ($get->bookings as $booking)
-                $bookings[] = $booking;
-        }
-
-        return response()->json(['success' => true, 'room' => $room, 'bookings' => $bookings], 201);
+        return response()->json(['success' => true, 'room' => $get], 201);
     }
 
     public function remove(Room $room)

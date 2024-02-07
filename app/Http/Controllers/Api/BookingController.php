@@ -11,14 +11,8 @@ class BookingController extends Controller
 {
     public function show(Booking $booking)
     {
-        $get = Booking::with('payments')->find($booking->id);
-        $payments = [];
-        if(!empty($get->payments)){
-            foreach ($get->payments as $payment)
-                $payments[] = $payment;
-        }
-
-        return response()->json(['success' => true, 'booking' => $booking, 'payments' => $payments], 201);
+        $get = Booking::with('payments', 'room', 'customer')->find($booking->id);
+        return response()->json(['success' => true, 'booking' => $get], 201);
     }
 
     public function store(Request $request)
