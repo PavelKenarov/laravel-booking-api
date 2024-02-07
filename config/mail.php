@@ -131,4 +131,5 @@ return [
         ],
     ],
 
+    'support_email' => 'support@hotel.com'
 ];

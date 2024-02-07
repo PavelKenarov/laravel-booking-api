@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Events\NewBooking;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -105,6 +106,7 @@ class BookingController extends Controller
             ], 422);
         }
 
+        event(new NewBooking($booking));
         return $booking;
     }
 
