@@ -37,12 +37,19 @@
 ![alt text](public/hotel-api-pic/Routes.JPG) 
 
 ### Examples
+
+![alt text](public/hotel-api-pic/ViewRoom.JPG) 
+
+![alt text](public/hotel-api-pic/ViewBooking.JPG) 
+
+![alt text](public/hotel-api-pic/ViewBooking1.JPG) 
+
+![alt text](public/hotel-api-pic/ViewPayment.JPG)
+
+![alt text](public/hotel-api-pic/ViewCustomer.JPG)
+
 ![alt text](public/hotel-api-pic/Room-add.JPG)
  
 ![alt text](public/hotel-api-pic/Room-add-token.JPG) 
 
 ![alt text](public/hotel-api-pic/StoreBooking.JPG) 
-
-![alt text](public/hotel-api-pic/ViewRoom.JPG) 
-
-![alt text](public/hotel-api-pic/ViewBooking.JPG) 

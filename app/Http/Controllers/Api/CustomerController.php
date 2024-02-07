@@ -46,13 +46,7 @@ class CustomerController extends Controller
     public function index(Customer $customer)
     {
         $get = Customer::with('bookings')->find($customer->id);
-        $bookings = [];
-        if(!empty($get->bookings)){
-            foreach ($get->bookings as $booking)
-                $bookings[] = $booking;
-        }
-
-        return response()->json(['success' => true, 'customer' => $customer, 'bookings' => $bookings], 201);
+        return response()->json(['success' => true, 'customer' => $get], 201);
     }
 
     public function remove(Customer $customer)

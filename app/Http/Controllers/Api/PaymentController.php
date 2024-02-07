@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
-use App\Models\Booking;
 use App\Models\Payment;
 
 
@@ -13,7 +12,8 @@ class PaymentController extends Controller
 {
     public function show(Payment $payment)
     {
-        return response()->json(['success' => true, 'payment' => $payment], 201);
+        $get = Payment::with('booking')->find($payment->id);
+        return response()->json(['success' => true, 'payment' => $get], 201);
     }
 
     public function store(Request $request)

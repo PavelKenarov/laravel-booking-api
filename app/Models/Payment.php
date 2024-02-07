@@ -18,7 +18,7 @@ class Payment extends Model
 
     protected $table = 'payment';
 
-    public function bookings()
+    public function booking()
     {
         return $this->belongsTo(Booking::class);
     }

@@ -17,12 +17,12 @@ class Booking extends Model
 
     protected $table = 'booking';
 
-    public function customers()
+    public function customer()
     {
         return $this->belongsTo(Customer::class);
     }
 
-    public function rooms()
+    public function room()
     {
         return $this->belongsTo(Room::class);
     }
