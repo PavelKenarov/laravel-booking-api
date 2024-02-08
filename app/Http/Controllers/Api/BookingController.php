@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Events\NewBooking;
+use App\Events\ChangeBooking;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -112,6 +113,8 @@ class BookingController extends Controller
 
     private function updateBooking($validatedData, Booking $booking): mixed
     {
+        $oldBooking = clone $booking;
+
         try {
             $booking->update($validatedData);
         } catch (ValidationException $e) {
@@ -120,6 +123,8 @@ class BookingController extends Controller
                 'errors' => $e->validator->errors()->getMessages(),
             ], 422);
         }
+
+        event(new ChangeBooking($booking, $oldBooking));
 
         return $booking;
     }
