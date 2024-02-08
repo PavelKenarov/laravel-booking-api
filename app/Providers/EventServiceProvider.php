@@ -7,6 +7,8 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use App\Events\NewBooking;
 use App\Listeners\NewBookingListener;
+use App\Events\ChangeBooking;
+use App\Listeners\ChangeBookingListener;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -21,6 +23,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         NewBooking::class => [
             NewBookingListener::class,
+        ],
+        ChangeBooking::class => [
+            ChangeBookingListener::class,
         ],
     ];
 

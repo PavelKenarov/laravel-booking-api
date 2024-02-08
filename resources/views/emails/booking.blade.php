@@ -1,6 +1,6 @@
 <h1>New Booking</h1>
 <p>
-    Booking ID #{{ $booking->id }} е създадена.<br/>
+    Booking ID #{{ $booking->id }}<br/>
     Start date: {{$booking->start_date}}<br/>
     End date: {{$booking->end_date}}<br/>
     Price: {{$booking->price}}
