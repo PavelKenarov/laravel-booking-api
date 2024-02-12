@@ -36,7 +36,7 @@ class BookingController extends Controller
 
     public function update(Request $request, Booking $booking): mixed
     {
-        $validated = $this->validateBooking($request);
+        $validated = $this->validateBooking($request, false);
         if(!empty($validated->headers))
             return $validated;
 
@@ -57,11 +57,13 @@ class BookingController extends Controller
         return response()->json(['success' => true, 'message' => 'Booking deleted successfully'], 201);
     }
 
-    private function validateBooking(Request $request): mixed
+    private function validateBooking(Request $request, $create = true): mixed
     {
-        $checkRoomAndCustomer = $this->checkRoomAndCustomer($request);
-        if($checkRoomAndCustomer !== true)
-            return $checkRoomAndCustomer;
+        if($create){
+            $checkRoomAndCustomer = $this->checkRoomAndCustomer($request);
+            if($checkRoomAndCustomer !== true)
+                return $checkRoomAndCustomer;
+        }
 
         try {
             $validatedData = $request->validate([

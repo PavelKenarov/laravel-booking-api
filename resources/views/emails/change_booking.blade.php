@@ -5,7 +5,7 @@
     Room ID: {{$booking->room_id}}<br/>
     Start date: {{$booking->start_date}}<br/>
     End date: {{$booking->end_date}}<br/>
-    Price: {{$booking->price}}
+    Price: {{$booking->price}}<br/>
     Created at: {{$booking->created_at}}<br/>
     Updated at: {{$booking->updated_at}}<br/>
 </p>
@@ -26,7 +26,7 @@
     Room ID: {{$oldBooking->room_id}}<br/>
     Start date: {{$oldBooking->start_date}}<br/>
     End date: {{$oldBooking->end_date}}<br/>
-    Price: {{$oldBooking->price}}
+    Price: {{$oldBooking->price}}<br/>
     Created at: {{$oldBooking->created_at}}<br/>
     Updated at: {{$oldBooking->updated_at}}<br/>
 </p>
