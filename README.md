@@ -14,6 +14,19 @@
 - Configure database connection in .env
 - Add database migration tables:  php artisan migrate
 
+### Configure Unit Tests
+- Create second database for using in unit tests
+
+- Add the db credentials into .env file:
+
+- **DB_TEST_DATABASE=test_db**
+- **DB_TEST_USERNAME=test_db_username**
+- **DB_TEST_PASSWORD= test_db_password**
+
+![alt text](public/hotel-api-pic/UnitTests.JPG)
+
+- Run migrations into test database: php artisan migrate:fresh --database=testing
+
 ### Use Postman for tests
 
 - Navigate to registration page http://localhost/PROJECT-FOLDER/public/api/register and make new User:
