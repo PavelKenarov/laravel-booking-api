@@ -2,7 +2,6 @@
 
 namespace App\Events;
 
-use App\Models\Booking;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
@@ -12,12 +11,15 @@ class NewBooking
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $bookingId;
+
     /**
      * Create a new event instance.
+     * @param $id
      */
-    public function __construct(Booking $booking)
+    public function __construct($id)
     {
-        $this->booking = $booking;
+        $this->bookingId = $id;
     }
 
     /**
@@ -28,12 +30,12 @@ class NewBooking
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('bookings'),
+            new PrivateChannel('new_booking'),
         ];
     }
 
-    public function getBooking(): Booking
+    public function getBooking()
     {
-        return $this->booking;
+        return $this->bookingId;
     }
 }

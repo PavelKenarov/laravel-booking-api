@@ -109,7 +109,7 @@ class BookingController extends Controller
             ], 422);
         }
 
-        event(new NewBooking($booking));
+        event(new NewBooking($booking->id));
         return $booking;
     }
 

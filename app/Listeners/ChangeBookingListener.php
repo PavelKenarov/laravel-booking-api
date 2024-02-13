@@ -29,10 +29,12 @@ class ChangeBookingListener
             'oldBooking' => $event->oldBooking
         ];
 
-        Log::info('The booking has been changed!',  $data);
+        dispatch(function() use ($data) {
+            Log::info('The booking has been changed!',  $data);
 
-        Mail::send('emails.change_booking',  $data, function ($message) {
-            $message->to(config('mail.support_email'))->subject('The booking has been changed!');
-        });
+            Mail::send('emails.change_booking',  $data, function ($message) {
+                $message->to(config('mail.support_email'))->subject('The booking has been changed!');
+            });
+        })->delay(now()->addMinutes(2));
     }
 }
