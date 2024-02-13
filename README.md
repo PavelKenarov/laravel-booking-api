@@ -10,22 +10,24 @@
 ## Hotel Api
 
 - Clone the repository
-- Install dependencies: composer install
+- Install dependencies: ``` composer install ```
 - Configure database connection in .env
-- Add database migration tables:  php artisan migrate
+- Add database migration tables:  ``` php artisan migrate ```
+
+- To run queues, start the process:  ``` php artisan queue:work ```
 
 ### Configure Unit Tests
 - Create second database for using in unit tests
 
 - Add the db credentials into .env file:
 
-- **DB_TEST_DATABASE=test_db**
-- **DB_TEST_USERNAME=test_db_username**
-- **DB_TEST_PASSWORD= test_db_password**
+- ``` DB_TEST_DATABASE=test_db ```
+- ``` DB_TEST_USERNAME=test_db_username ```
+- ``` DB_TEST_PASSWORD= test_db_password ```
+
+- Run migrations into test database: ``` php artisan migrate:fresh --database=testing ```
 
 ![alt text](public/hotel-api-pic/UnitTests.JPG)
-
-- Run migrations into test database: php artisan migrate:fresh --database=testing
 
 ### Use Postman for tests
 
